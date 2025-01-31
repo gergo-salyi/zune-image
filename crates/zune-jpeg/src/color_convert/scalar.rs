@@ -82,21 +82,22 @@ pub fn ycbcr_to_rgb_inner_16_scalar<const BGRA: bool>(
         .zip(cb.iter().zip(cr.iter()))
         .zip(opt.chunks_exact_mut(3))
     {
-        let cr = cr - 128;
-        let cb = cb - 128;
+        let cr = (cr - 128) as f32;
+        let cb = (cb - 128) as f32;
+        let y = *y as f32;
 
-        let r = y + ((45_i16.wrapping_mul(cr)) >> 5);
-        let g = y - ((11_i16.wrapping_mul(cb) + 23_i16.wrapping_mul(cr)) >> 5);
-        let b = y + ((113_i16.wrapping_mul(cb)) >> 6);
+        let r = (y + 1.402 * cr).round() as u8;
+        let g = (y - 0.34414 * cb - 0.71414 * cr).round() as u8;
+        let b = (y + 1.772 * cb).round() as u8;
 
         if BGRA {
-            out[0] = clamp(b);
-            out[1] = clamp(g);
-            out[2] = clamp(r);
+            out[0] = b;
+            out[1] = g;
+            out[2] = r;
         } else {
-            out[0] = clamp(r);
-            out[1] = clamp(g);
-            out[2] = clamp(b);
+            out[0] = r;
+            out[1] = g;
+            out[2] = b;
         }
     }
 

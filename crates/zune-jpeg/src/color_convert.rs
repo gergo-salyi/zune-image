@@ -62,22 +62,22 @@ mod scalar;
 pub fn choose_ycbcr_to_rgb_convert_func(
     type_need: ColorSpace, options: &DecoderOptions
 ) -> Option<ColorConvert16Ptr> {
-    #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-    #[cfg(feature = "x86")]
-    {
-        use zune_core::log::debug;
-        if options.use_avx2() {
-            debug!("Using AVX optimised color conversion functions");
-
-            // I believe avx2 means sse4 is also available
-            // match colorspace
-            match type_need {
-                ColorSpace::RGB => return Some(ycbcr_to_rgb_avx2),
-                ColorSpace::RGBA => return Some(ycbcr_to_rgba_avx2),
-                _ => () // fall through to scalar, which has more types
-            };
-        }
-    }
+    // #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+    // #[cfg(feature = "x86")]
+    // {
+    //     use zune_core::log::debug;
+    //     if options.use_avx2() {
+    //         debug!("Using AVX optimised color conversion functions");
+    //
+    //         // I believe avx2 means sse4 is also available
+    //         // match colorspace
+    //         match type_need {
+    //             ColorSpace::RGB => return Some(ycbcr_to_rgb_avx2),
+    //             ColorSpace::RGBA => return Some(ycbcr_to_rgba_avx2),
+    //             _ => () // fall through to scalar, which has more types
+    //         };
+    //     }
+    // }
     // when there is no x86 or we haven't returned by here, resort to scalar
     return match type_need {
         ColorSpace::RGB => Some(scalar::ycbcr_to_rgb_inner_16_scalar::<false>),
