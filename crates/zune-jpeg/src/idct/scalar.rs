@@ -10,7 +10,7 @@
 //!
 //! Not as fast as AVX one.
 
-const SCALE_BITS: i32 = 512 + 65536 + (128 << 17);
+const SCALE_BITS: i32 = 65536 + (128 << 17);
 
 #[allow(unused_assignments)]
 #[allow(

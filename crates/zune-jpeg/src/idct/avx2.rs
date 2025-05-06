@@ -38,7 +38,7 @@ use core::arch::x86_64::*;
 
 use crate::unsafe_utils::{transpose, YmmRegister};
 
-const SCALE_BITS: i32 = 512 + 65536 + (128 << 17);
+const SCALE_BITS: i32 = 65536 + (128 << 17);
 
 /// SAFETY
 /// ------
