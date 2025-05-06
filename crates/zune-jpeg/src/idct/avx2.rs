@@ -168,7 +168,7 @@ pub unsafe fn idct_int_avx2_inner(
             // even part
             let p1 = (row2 + row6) * 2217;
 
-            let mut t2 = p1 + row6 * -7567;
+            let mut t2 = p1 + row6 * -7568;
             let mut t3 = p1 + row2 * 3135;
 
             let mut t0 = YmmRegister {
@@ -194,10 +194,10 @@ pub unsafe fn idct_int_avx2_inner(
             t2 = row3 * 12586;
             t3 = row1 * 6149;
 
-            let p1 = p5 + p1 * -3685;
-            let p2 = p5 + (p2 * -10497);
-            let p3 = p3 * -8034;
-            let p4 = p4 * -1597;
+            let p1 = p5 + p1 * -3686;
+            let p2 = p5 + (p2 * -10498);
+            let p3 = p3 * -8035;
+            let p4 = p4 * -1598;
 
             t3 += p1 + p4;
             t2 += p2 + p3;

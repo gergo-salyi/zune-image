@@ -65,7 +65,7 @@ pub fn idct_int(in_vector: &mut [i32; 64], out_vector: &mut [i16], stride: usize
 
             let p1 = (p2 + p3).wrapping_mul(2217);
 
-            let t2 = p1 + p3 * -7567;
+            let t2 = p1 + p3 * -7568;
             let t3 = p1 + p2 * 3135;
 
             let p2 = in_vector[ptr];
@@ -95,10 +95,10 @@ pub fn idct_int(in_vector: &mut [i32; 64], out_vector: &mut [i16], stride: usize
             t2 *= 12586;
             t3 *= 6149;
 
-            let p1 = p5 + p1 * -3685;
-            let p2 = p5 + p2 * -10497;
-            let p3 = p3 * -8034;
-            let p4 = p4 * -1597;
+            let p1 = p5 + p1 * -3686;
+            let p2 = p5 + p2 * -10498;
+            let p3 = p3 * -8035;
+            let p4 = p4 * -1598;
 
             t3 += p1 + p4;
             t2 += p2 + p3;
@@ -126,7 +126,7 @@ pub fn idct_int(in_vector: &mut [i32; 64], out_vector: &mut [i16], stride: usize
             let p3 = in_vector[i + 6];
 
             let p1 = (p2 + p3) * 2217;
-            let t2 = p1 + p3 * -7567;
+            let t2 = p1 + p3 * -7568;
             let t3 = p1 + p2 * 3135;
 
             let p2 = in_vector[i];
@@ -161,10 +161,10 @@ pub fn idct_int(in_vector: &mut [i32; 64], out_vector: &mut [i16], stride: usize
             t2 = t2.wrapping_mul(12586);
             t3 = t3.wrapping_mul(6149);
 
-            let p1 = p5 + p1 * -3685;
-            let p2 = p5 + p2 * -10497;
-            let p3 = p3 * -8034;
-            let p4 = p4 * -1597;
+            let p1 = p5 + p1 * -3686;
+            let p2 = p5 + p2 * -10498;
+            let p3 = p3 * -8035;
+            let p4 = p4 * -1598;
 
             t3 += p1 + p4;
             t2 += p2 + p3;
